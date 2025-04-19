@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="Paws">
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="8" />
+      <inertia ixx="0.01801375" ixy="0" ixz="0.000424826" 
+                iyy="0.052344195" iyz="0" izz="0.063719013"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+<!--!!!!!!!!!!!!!!!!!! Front Right Leg !!!!!!!!!!!!!!!!!!!!!!!!!!-->
+  <link name="FR_HIP">
+    <inertial>
+      <origin
+        xyz="0.051126 0.0015613 -2.8843E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.7" />
+      <inertia ixx="0.000815672" ixy="-0.000001753" ixz="0.000000117"
+                iyy="0.0004467" iyz="-0.00000015" izz="0.000526032"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FR_HIP.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FR_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_HIP_joint" type="continuous">
+    <origin
+      xyz="0.1337 -0.05599 0.005969"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FR_HIP" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+
+  <link name="FR_KNEE">
+    <inertial>
+      <origin
+        xyz="-4.9357E-05 -0.031336 -0.0089769"
+        rpy="0 0 0" />
+      <mass
+        value="0.884" />
+      <inertia ixx="0.00068084" ixy="-0.000257679" ixz="0.000003178"
+                iyy="0.001766531" iyz="0.000003516" izz="0.001619267"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FR_KNEE.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FR_KNEE.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_KNEE_joint"
+    type="continuous">
+    <origin
+      xyz="0.055 -0.017 0"
+      rpy="0 0 0" />
+    <parent
+      link="FR_HIP" />
+    <child
+      link="FR_KNEE" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+
+  <link name="FR_FEET">
+    <inertial>
+      <origin
+        xyz="-3.6717E-07 1.5903E-08 -0.088089"
+        rpy="0 0 0" />
+      <mass
+        value="0.063" />
+      <inertia ixx="0.000719905" ixy="0" ixz="0.0" iyy="0.000726173" iyz="0" izz="0.000014957"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FR_FEET.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FR_FEET.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_FEET_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0605 -0.15"
+      rpy="0 0 0" />
+    <parent
+      link="FR_KNEE" />
+    <child
+      link="FR_FEET" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+
+  <link name="FR_TOE">
+    <contact>
+      <friction_anchor/>
+      <stiffness value="30000.0"/>
+      <damping value="1000.0"/>
+      <spinning_friction value="0.3"/>
+      <lateral_friction value="3.0"/>
+    </contact>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="darkgray"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025"/>
+    </inertial>
+  </link>
+  <joint name="FR_TOE_joint" type="fixed">
+    <parent link="FR_FEET"/>
+    <child link="FR_TOE"/>
+    <origin xyz="0 0 -0.202"/>
+    <dynamics damping="0.0" friction="1"/>
+  </joint>
+<!--!!!!!!!!!!!!!!!!!! Front Left Leg !!!!!!!!!!!!!!!!!!!!!!!!!!-->
+  <link name="FL_HIP">
+    <inertial>
+      <origin
+        xyz="0.051126 -0.0015613 2.8843E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.7" />
+      <inertia ixx="0.000815672" ixy="-0.000001753" ixz="0.000000117"
+                iyy="0.0004467" iyz="-0.00000015" izz="0.000526032"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FL_HIP.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FL_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_HIP_joint"
+    type="continuous">
+    <origin
+      xyz="0.1337 0.05601 0.005969"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FL_HIP" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+
+  <link name="FL_KNEE">
+    <inertial>
+      <origin
+        xyz="4.9357E-05 0.031336 -0.0089769"
+        rpy="0 0 0" />
+      <mass
+        value="0.884" />
+      <inertia ixx="0.00068084" ixy="-0.000257679" ixz="0.000003178"
+                iyy="0.001766531" iyz="0.000003516" izz="0.001619267"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FL_KNEE.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FL_KNEE.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_KNEE_joint"
+    type="continuous">
+    <origin
+      xyz="0.055 0.017 0"
+      rpy="0 0 0" />
+    <parent
+      link="FL_HIP" />
+    <child
+      link="FL_KNEE" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link name="FL_FEET">
+    <inertial>
+      <origin
+        xyz="-3.6717E-07 1.5904E-08 -0.088089"
+        rpy="0 0 0" />
+      <mass
+        value="0.063" />
+      <inertia ixx="0.000719905" ixy="0" ixz="0.0" iyy="0.000726173" iyz="0" izz="0.000014957"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FL_FEET.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/FL_FEET.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_FEET_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0605 -0.15"
+      rpy="0 0 0" />
+    <parent
+      link="FL_KNEE" />
+    <child
+      link="FL_FEET" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+
+  <link name="FL_TOE">
+    <contact>
+      <friction_anchor/>
+      <stiffness value="30000.0"/>
+      <damping value="1000.0"/>
+      <spinning_friction value="0.3"/>
+      <lateral_friction value="3.0"/>
+    </contact>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="darkgray"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025"/>
+    </inertial>
+  </link>
+  <joint name="FL_TOE_joint" type="fixed">
+    <parent link="FL_FEET"/>
+    <child link="FL_TOE"/>
+    <origin xyz="0 0 -0.202"/>
+    <dynamics damping="0.0" friction="1"/>
+  </joint>
+
+<!--!!!!!!!!!!!!!!!!!! Rear Right Leg !!!!!!!!!!!!!!!!!!!!!!!!!!-->
+  <link name="RR_HIP">
+    <inertial>
+      <origin
+        xyz="-0.051126 0.0015613 2.8843E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.7" />
+      <inertia ixx="0.000815672" ixy="-0.000001753" ixz="0.000000117"
+                iyy="0.0004467" iyz="-0.00000015" izz="0.000526032"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RR_HIP.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RR_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_HIP_joint"
+    type="continuous">
+    <origin
+      xyz="-0.1453 -0.05599 0.005969"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RR_HIP" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <link name="RR_KNEE">
+    <inertial>
+      <origin
+        xyz="-4.9357E-05 -0.031336 -0.0089769"
+        rpy="0 0 0" />
+      <mass
+        value="0.884" />
+      <inertia ixx="0.00068084" ixy="-0.000257679" ixz="0.000003178"
+                iyy="0.001766531" iyz="0.000003516" izz="0.001619267"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RR_KNEE.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RR_KNEE.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_KNEE_joint"
+    type="continuous">
+    <origin
+      xyz="-0.055 -0.017 0"
+      rpy="0 0 0" />
+    <parent
+      link="RR_HIP" />
+    <child
+      link="RR_KNEE" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+
+  <link name="RR_FEET">
+    <inertial>
+      <origin
+        xyz="-3.6717E-07 1.5901E-08 -0.088089"
+        rpy="0 0 0" />
+      <mass
+        value="0.063" />
+      <inertia ixx="0.000719905" ixy="0" ixz="0.0" iyy="0.000726173" iyz="0" izz="0.000014957"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RR_FEET.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RR_FEET.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_FEET_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.0605 -0.15"
+      rpy="0 0 0" />
+    <parent
+      link="RR_KNEE" />
+    <child
+      link="RR_FEET" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+
+  <link name="RR_TOE">
+    <contact>
+      <friction_anchor/>
+      <stiffness value="30000.0"/>
+      <damping value="1000.0"/>
+      <spinning_friction value="0.3"/>
+      <lateral_friction value="3.0"/>
+    </contact>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="darkgray"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025"/>
+    </inertial>
+  </link>
+  <joint name="RR_TOE_joint" type="fixed">
+    <parent link="RR_FEET"/>
+    <child link="RR_TOE"/>
+    <origin xyz="0 0 -0.202"/>
+    <dynamics damping="0.0" friction="1"/>
+  </joint>
+
+<!--!!!!!!!!!!!!!!!!!! Rear Left Leg !!!!!!!!!!!!!!!!!!!!!!!!!!-->
+  <link name="RL_HIP">
+    <inertial>
+      <origin
+        xyz="-0.051126 -0.0015613 -2.8843E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.7" />
+      <inertia ixx="0.000815672" ixy="-0.000001753" ixz="0.000000117"
+                iyy="0.0004467" iyz="-0.00000015" izz="0.000526032"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RL_HIP.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RL_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_HIP_joint"
+    type="continuous">
+    <origin
+      xyz="-0.1453 0.05601 0.005969"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RL_HIP" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <link name="RL_KNEE">
+    <inertial>
+      <origin
+        xyz="4.9357E-05 0.031336 -0.0089769"
+        rpy="0 0 0" />
+      <mass
+        value="0.884" />
+      <inertia ixx="0.00068084" ixy="-0.000257679" ixz="0.000003178"
+                iyy="0.001766531" iyz="0.000003516" izz="0.001619267"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RL_KNEE.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RL_KNEE.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_KNEE_joint"
+    type="continuous">
+    <origin
+      xyz="-0.055 0.017 0"
+      rpy="0 0 0" />
+    <parent
+      link="RL_HIP" />
+    <child
+      link="RL_KNEE" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link name="RL_FEET">
+    <inertial>
+      <origin
+        xyz="-3.6717E-07 1.5904E-08 -0.088089"
+        rpy="0 0 0" />
+      <mass
+        value="0.063" />
+      <inertia ixx="0.000719905" ixy="0" ixz="0.0" iyy="0.000726173" iyz="0" izz="0.000014957"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RL_FEET.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://PawsURDF/meshes/RL_FEET.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_FEET_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.0605 -0.15"
+      rpy="0 0 0" />
+    <parent
+      link="RL_KNEE" />
+    <child
+      link="RL_FEET" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+
+  <link name="RL_TOE">
+    <contact>
+      <friction_anchor/>
+      <stiffness value="30000.0"/>
+      <damping value="1000.0"/>
+      <spinning_friction value="0.3"/>
+      <lateral_friction value="3.0"/>
+    </contact>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="darkgray"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025"/>
+    </inertial>
+  </link>
+  <joint name="RL_TOE_joint" type="fixed">
+    <parent link="RL_FEET"/>
+    <child link="RL_TOE"/>
+    <origin xyz="0 0 -0.202"/>
+    <dynamics damping="0.0" friction="1"/>
+  </joint>
+</robot>
